@@ -20,31 +20,31 @@ Or install it yourself as:
 
 ## Usage
 
-The Hour class accepts an hour-and-minute, like so: `Hour.new('17:30')` or `Hour.new('48:00')`; alternatively: `Hour.new(17,30)` or `Hour.new(48)`.
+The Hour class accepts an hour-and-minute, like so: `Hour::Hour.new('17:30')` or `Hour::Hour.new('48:00')`; alternatively: `Hour::Hour.new(17,30)` or `Hour::Hour.new(48)`.
 
-You can also convert a Ruby Time object to a Hour object, like so: `Hour.from_time(Time.now)`.
+You can also convert a Ruby Time object to a Hour object, like so: `Hour::Hour.from_time(Time.now)`.
 
 Valid methods include:
 
 ```ruby
-sometime = Hour.new(28, 30)
-sometime.hours
+interval = Hour.new(28, 30)
+interval.hours
   # => 28
-sometime.minutes
+interval.minutes
   # => 30
-sometime.to_a
+interval.to_a
   # => [28, 30]
-sometime.to_s
+interval.to_s
   # => "28:30"
-sometime.to_seconds
+interval.to_seconds
   # => 102600
-sometime.to_days
+interval.to_days
   # => 1
-sometime.to_hours_less_days
+interval.to_hours_less_days
   # => 4
-sometime.to_formatted_s
+interval.to_formatted_s
   # => "1 day, 4 hours, 30 minutes"
-sometime.to_time
+interval.to_time
   # => 0000-01-02 04:30:00 +0000
 ```
 
