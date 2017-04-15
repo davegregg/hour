@@ -1,8 +1,6 @@
 # Hour
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hour`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A simple class for handling hours and minutes, without the baggage of the Time or DateTime classes.
 
 ## Installation
 
@@ -22,7 +20,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The Hour class accepts an hour-and-minute, like so: `Hour.new('17:30')` or `Hour.new('48:00')`; alternatively: `Hour.new(17,30)` or `Hour.new(48)`.
+
+You can also convert a Ruby Time object to a Hour object, like so: `Hour.from_time(Time.now)`.
+
+Valid methods include:
+
+```ruby
+sometime = Hour.new(28, 30)
+sometime.hours
+  # => 28
+sometime.minutes
+  # => 30
+sometime.to_a
+  # => [28, 30]
+sometime.to_s
+  # => "28:30"
+sometime.to_seconds
+  # => 102600
+sometime.to_days
+  # => 1
+sometime.to_hours_less_days
+  # => 4
+sometime.to_formatted_s
+  # => "1 day, 4 hours, 30 minutes"
+sometime.to_time
+  # => 0000-01-02 04:30:00 +0000
+```
 
 ## Development
 
@@ -38,4 +62,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
