@@ -6,7 +6,7 @@ module Hour
 
     def initialize(hours, minutes = 0)
       hours, minutes = hours.split(':').map(&:to_i) if hours.is_a? String
-      minutes = [1, minutes, 59].sort[1] #clamp: constrains the assignment to the middle value
+      minutes = [0, minutes, 59].sort[1] #clamp: constrains the assignment to the middle value
       @to_s = "#{'%02d' % hours}:#{'%02d' % minutes}"
       @to_a = [@hours = hours, @minutes = minutes]
       @to_seconds = ((hours * 60) + minutes) * 60
