@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{A simple class for handling hours and minutes.}
   spec.description   = %q{A simple class for handling hours and minutes, without the baggage of the Time or DateTime classes.}
-  spec.homepage      = "https://github.com/davegregg/hour."
+  spec.homepage      = "https://github.com/davegregg/hour"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
