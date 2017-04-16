@@ -27,7 +27,8 @@ module Hour
     end
 
     def self.from_time(time_obj)
-      Hour.new(time_obj.hour, time_obj.min)
+      hour = time_obj.hour + (time_obj.day - 1) * 24 if time_obj.year == 0
+      self.new(hour || time_obj.hour, time_obj.min)
     end
 
   end
