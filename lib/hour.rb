@@ -5,7 +5,6 @@ module Hour
     attr_reader :hours, :minutes, :to_seconds, :to_days, :to_hours_less_days, :to_s, :to_formatted_s, :to_a, :to_time
 
     def initialize(hours, minutes = 0)
-      binding.pry
       hours, minutes = hours.split(':') if hours.is_a? String
       @minutes = [0, minutes.to_i, 59].sort[1]          # Constrains assignment to the middle value, w/o the #Clamp method
       @to_a = [@hours = hours.to_i, @minutes]
@@ -28,7 +27,7 @@ module Hour
     end
 
     def self.from_time(time_obj)
-      hour = time_obj.hour + (time_obj.day - 1) * 24 if time_obj.year == 0 # 1) Note that we expect Time input to be year 0 and day to take 1 as 24 hours, so that a day value of 2 and an hour value of 4 will be interpreted as "28 hours".
+      hour = time_obj.hour + (time_obj.day - 1) * 24 if time_obj.year == 0 # Note that we expect Time input to be year 0 and day to take 1 as 24 hours, so that a day value of 2 and an hour value of 4 will be interpreted as "28 hours".
       self.new(hour || time_obj.hour, time_obj.min)
     end
 
