@@ -2,11 +2,12 @@
 
 module Hour
   class Hour
-    attr_reader :hours, :minutes, :to_seconds, :days, :hours_less_days, :to_s, :to_formatted_s, :to_a, :to_time
+    attr_reader :hours, :minutes, :to_seconds, :days, :hours_less_days, :to_s, :to_formatted_s, :to_a, :to_time, :minutes_in_base10
 
     def initialize(hours, minutes = 0)
       hours, minutes = hours.split(':') if hours.is_a? String
       @minutes = [0, minutes.to_i, 59].sort[1]          # Constrains assignment to the middle value, w/o the #Clamp method
+      @minutes_in_base10 = @minutes.to_f / 60
       @to_a = [@hours = hours.to_i, @minutes]
       @to_s = "#{'%02d' % @hours}:#{'%02d' % @minutes}" # Formats single-digits such that '1' will be '01'
       @to_seconds = (@hours * 60 + @minutes) * 60
