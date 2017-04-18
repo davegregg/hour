@@ -40,7 +40,9 @@ module Hour
     end
 
     def self.from_base10(num)
-      binding.pry
+      if !num
+        binding.pry
+      end
       hour, minute = num.divmod(1)
       self.new(hour, minute * 60)
     end
