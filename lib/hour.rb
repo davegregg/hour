@@ -39,6 +39,11 @@ module Hour
       self.new(hour || time_obj.hour, time_obj.min)
     end
 
+    def self.from_base10(num)
+      minute = num - hour = num.floor
+      self.new(hour, minute)
+    end
+
     alias_method :to_days, :days                        # DEPRECATION: to_days
     alias_method :to_hours_less_days, :hours_less_days  # DEPRECATION: to_hours_less_days
 
