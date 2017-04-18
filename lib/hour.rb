@@ -40,8 +40,8 @@ module Hour
     end
 
     def self.from_base10(num)
-      minute = num - hour = num.floor
-      self.new(hour, minute)
+      hour, minute = num.divmod(1)
+      self.new(hour, minute * 60)
     end
 
     alias_method :to_days, :days                        # DEPRECATION: to_days
