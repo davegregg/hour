@@ -6,11 +6,11 @@ module Hour
 
     def initialize(hours, minutes = 0)
       hours, minutes = hours.split(':') if hours.is_a? String
-      @minutes = [0, minutes.to_i, 59].sort[1]          # Constrains assignment to the middle value, w/o the #Clamp method
+      @minutes = [minimum = 0, minutes.to_i, maximum = 59].sort[1]
       @minutes_in_base10 = @minutes.to_f / 60
       @to_a = [@hours = hours.to_i, @minutes]
       @to_base10 = @hours + @minutes_in_base10
-      @to_s = "#{'%02d' % @hours}:#{'%02d' % @minutes}" # Formats single-digits such that '1' will be '01'
+      @to_s = "#{'%02d' % @hours}:#{'%02d' % @minutes}" # Formats single-digits such that 1 will read '01'
       @to_seconds = (@hours * 60 + @minutes) * 60
       @days = @hours / 24 || 0
       @hours_less_days = @hours - 24 * @days
