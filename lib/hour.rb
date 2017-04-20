@@ -20,8 +20,8 @@ module Hour
       @to_time = Time.new(
         0,                   #year
         1,                   #month
-        1 + @days,        #day
-        @hours_less_days, #hour
+        1 + @days,           #day
+        @hours_less_days,    #hour
         @minutes,            #minute
         0,                   #second
         0                    #UTC    #TODO: handle both Time.zone format & deprecated UTC default?
@@ -35,13 +35,13 @@ module Hour
     end
 
     def self.from_time(time_obj)
-      return nil if time_obj == nil
-      hour = time_obj.hour + (time_obj.day - 1) * 24 if time_obj.year == 0 # Note that we expect Time input to be year 0, month 1 (minimum values). Incrementing day to a value above 1 means "add 24 * x hours", where x is the number of days above 1, so that a day value of 1 and hour value of 4 will be interpreted as "4 hours", whereas a day value of 2 and an hour value of 4 will be interpreted as "28 hours".
+      return nil if time_obj.nil?
+      hour = time_obj.hour + (time_obj.day - 1) * 24 if time_obj.year.zero? # We expect Time input to be year 0, month 1 (minimum values). Incrementing day to a value above 1 means "add 24 * x hours," where x is the number of days above 1, so that a day value of 1 and hour value of 4 will be interpreted as "4 hours," whereas a day value of 2 and an hour value of 4 will be interpreted as "28 hours."
       self.new(hour || time_obj.hour, time_obj.min)
     end
 
     def self.from_base10(num)
-      return nil if num == nil
+      return nil if num.nil?
       hour, minute = num.divmod(1)
       self.new(hour, minute * 60)
     end
